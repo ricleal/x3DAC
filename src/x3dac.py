@@ -10,7 +10,6 @@ J. Appl. Cryst. (2008). **41**, 729-737
 '''
 import sys
 import logging
-import logging.config
 
 __author__ = "Ricardo M. Ferraz Leal"
 __copyright__ = "Copyright 2014, ORNL"
@@ -21,10 +20,8 @@ __maintainer__ = "Ricardo M. Ferraz Leal"
 __email__ = "ferrazlealrm@ornl.gov"
 __status__ = "Beta"
 
-#todo : change this
-logging.config.fileConfig('../logging.ini')
-logger = logging.getLogger()
 
+logger = logging.getLogger()
 
 def main(argv):
     logger.info('Starting...')
@@ -32,4 +29,7 @@ def main(argv):
 
     
 if __name__ == '__main__':
+    # Done only once for all the program!
+    import common.logger
+    common.logger.setupLogging()
     main(sys.argv)
