@@ -22,9 +22,11 @@ __status__ = "Beta"
 
 
 logger = logging.getLogger()
+from common.options import args
 
 def main(argv):
     logger.info('Starting...')
+    print args.aaa
     logger.info('End!')
 
     
