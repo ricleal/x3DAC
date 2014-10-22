@@ -4,13 +4,13 @@ Created on Oct 22, 2014
 @author: rhf
 '''
 
-import os
+
 import json
 
 import sys
 print(sys.version)
 
-import logging
+from common import findFileInTheProject
 import logging.config
 
 logger = logging.getLogger(__name__)
@@ -28,31 +28,5 @@ def setupLogging(default_path=DEFAULT_LOG_FILENAME):
     logging.config.dictConfig(jsonConfig)
     logger.info("Using logger config file: " + path)
 
-def findFileInTheProject(fileName):
-    """
-    Attempts to locate a filename inside the project
-    
-    @return: the complete path of the file found
-    """
-    fileNameAttempt = os.path.join(os.path.dirname(os.path.realpath(__file__)),fileName)
-    if os.path.exists(fileNameAttempt):
-        return fileNameAttempt
-    
-    fileNameAttempt = os.path.join(os.getcwd(),fileName)
-    if os.path.exists(fileNameAttempt):
-        return fileNameAttempt
-    
-    fileNameAttempt = os.path.join(os.path.dirname(os.path.realpath(__file__)),fileName)
-    if os.path.exists(fileNameAttempt):
-        return fileNameAttempt
-    
-    fileNameAttempt = os.path.join(os.getcwd(),os.path.join(os.pardir,fileName))
-    if os.path.exists(fileNameAttempt):
-        return fileNameAttempt
-    
-    fileNameAttempt = os.path.join(os.getcwd(),"../",os.path.join(os.pardir,fileName))
-    if os.path.exists(fileNameAttempt):
-        return fileNameAttempt
-    
-    raise IOError("File not found in the Project: "+fileName)
+
     
