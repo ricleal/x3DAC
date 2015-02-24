@@ -33,5 +33,5 @@ def main(argv):
 if __name__ == '__main__':
     # Done only once for all the program!
     import common.logger
-    common.logger.setupLogging()
+    common.logger.setup_logging()
     main(sys.argv)
