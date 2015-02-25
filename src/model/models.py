@@ -28,7 +28,7 @@ class Cylinder(IModel):
         self.base = base.buffer(radius)
         h = shapely.geometry.Point(base.x, base.y+height, base.z)
         self.top = h.buffer(radius)
-        
+        self.shape = shapely.geometry.MultiPolygon([polygon, s, t])
         
     def intertection_in(self, ray):
         return self.shape.intersection(ray)
